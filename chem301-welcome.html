@@ -30,12 +30,24 @@
   .lede{font-size:17px;color:rgba(255,255,255,.88);max-width:520px;opacity:0;animation:fadeUp .9s .5s forwards}
   @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
-  /* ---------- WebGL molecule ---------- */
-  .mol{flex:0 0 280px;height:280px;position:relative;z-index:1;margin:auto;opacity:0;animation:fadeUp 1s .7s forwards}
-  .mol canvas{display:block;width:100%!important;height:100%!important;cursor:grab}
-  .mol canvas:active{cursor:grabbing}
-  .mol .cap{position:absolute;left:0;right:0;bottom:-6px;text-align:center;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
-  .mol .fallback{display:none;position:absolute;inset:0;place-items:center;text-align:center;font-size:14px;color:rgba(255,255,255,.8)}
+  /* ---------- WebGL molecule (PDB 6B17 via 3Dmol.js) ---------- */
+  .mol{flex:0 0 300px;position:relative;z-index:1;margin:auto;opacity:0;animation:fadeUp 1s .7s forwards}
+  .viewer{position:relative;width:300px;height:300px;cursor:grab}
+  .viewer:active{cursor:grabbing}
+  .viewer canvas{outline:none}
+  .mol .status{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-size:13px;line-height:1.5;
+    color:rgba(255,255,255,.8);pointer-events:none;transition:opacity .4s}
+  .mol .status.hidden{opacity:0}
+  .mol .cap{margin-top:4px;text-align:center;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.7)}
+  .mol .cap a{color:inherit;text-decoration:none;border-bottom:1px dotted rgba(255,255,255,.5)}
+  .mol .cap a:hover{color:#fff}
+  .mol .credit{margin-top:4px;text-align:center;font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.02em}
+  .mol .credit a{color:inherit;text-decoration:underline;text-decoration-color:rgba(255,255,255,.35)}
+  .views{display:flex;justify-content:center;gap:6px;margin-top:10px}
+  .views button{font:inherit;font-size:12px;font-weight:600;letter-spacing:.06em;padding:5px 12px;border-radius:999px;cursor:pointer;
+    border:1px solid rgba(255,255,255,.35);background:transparent;color:rgba(255,255,255,.85);transition:background .2s,color .2s}
+  .views button:hover{background:rgba(255,255,255,.12)}
+  .views button.on{background:#fff;color:var(--green-700);border-color:#fff}
 
   /* ---------- body layout ---------- */
   .grid{display:grid;grid-template-columns:1fr 300px;gap:24px;margin-top:24px}
@@ -87,13 +99,20 @@
       <h1>Welcome to CHEM301: Biochemistry
         <small>A five-week online course with Professor John Picione</small></h1>
       <p class="lede">From amino acids to metabolic pathways &mdash; the chemistry that keeps living things alive.
-        Look around, get your bearings, and don't hesitate to reach out.</p>
+        The molecule on this page is a 15-residue &alpha;-helix locked into shape by a synthetic macrocycle
+        (PDB 6B17). Look around, get your bearings, and don't hesitate to reach out.</p>
     </div>
 
-    <!-- WebGL alpha helix (three.js) -->
+    <!-- PDB 6B17 rendered with 3Dmol.js. Looks for ./6B17.pdb first, then falls back to RCSB. -->
     <div class="mol" id="mol">
-      <div class="fallback" id="fallback">α-helix<br>(3D view needs WebGL)</div>
-      <div class="cap">α-helix &middot; drag to rotate</div>
+      <div class="viewer" id="viewer"></div>
+      <div class="status" id="status">Loading PDB 6B17&hellip;</div>
+      <div class="views" id="views">
+        <button type="button" data-view="peptide" class="on">Peptide</button>
+        <button type="button" data-view="hexamer">Hexamer</button>
+      </div>
+      <div class="cap"><a href="https://www.rcsb.org/structure/6B17" target="_blank" rel="noopener">PDB 6B17</a> &middot; drag to rotate</div>
+      <div class="credit">Stapled &alpha;-helix &middot; Wu et al., <i>ChemBioChem</i> 2018, 19, 902&ndash;906</div>
     </div>
   </header>
 
@@ -171,105 +190,138 @@
   <footer>CHEM301 Biochemistry &middot; Unity Environmental University</footer>
 </div>
 
-<script type="module">
-  import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
+<script src="vendor/3Dmol-min.js"></script>
+<script>
+(function () {
+  var host = document.getElementById('mol');
+  var el = document.getElementById('viewer');
+  var status = document.getElementById('status');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const host = document.getElementById('mol');
-  const fallback = document.getElementById('fallback');
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Unity palette for the molecule
+  var LEAF = '#9ad66b', MINT = '#cfe9b8', SAGE = '#7fbf8e', PURPLE = '#6b3fa0';
+  var CHAIN_SHADES = [LEAF, MINT, SAGE];
 
-  let renderer;
+  function fail(msg) { status.textContent = msg; status.classList.remove('hidden'); }
+
+  // Let the page scroll over the molecule: swallow wheel events before 3Dmol sees them.
+  host.addEventListener('wheel', function (e) { e.stopPropagation(); }, { capture: true, passive: true });
+
+  if (!window.$3Dmol) { fail('3D viewer failed to load.'); return; }
+
+  // Prefer a copy of the structure next to this page; otherwise fetch it from RCSB.
+  function loadPDB() {
+    return fetch('6B17.pdb').then(function (r) {
+      if (!r.ok) throw new Error('no local copy');
+      return r.text();
+    }).catch(function () {
+      return fetch('https://files.rcsb.org/download/6B17.pdb').then(function (r) {
+        if (!r.ok) throw new Error('RCSB ' + r.status);
+        return r.text();
+      });
+    });
+  }
+
+  var viewer;
   try {
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  } catch (e) {
-    fallback.style.display = 'grid';
-  }
+    // black + alpha 0 is the premultiplied-safe way to get a transparent canvas
+    viewer = $3Dmol.createViewer(el, { backgroundColor: 'black', backgroundAlpha: 0, antialias: true, disableFog: true });
+  } catch (e) { fail('This browser cannot show the 3D view.'); return; }
 
-  if (renderer) {
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    renderer.setClearColor(0x000000, 0);
-    host.insertBefore(renderer.domElement, host.firstChild);
+  loadPDB().then(function (pdb) {
+    // Model 0: the asymmetric unit, shown as one capped-strapped peptide.
+    var pep = viewer.addModel(pdb, 'pdb');
+    // Model 1: the biological assembly (D3 hexamer) built from REMARK 350.
+    var hex = viewer.addModel(pdb, 'pdb', { doAssembly: true, duplicateAssemblyAtoms: true });
 
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
-    camera.position.set(0, 0, 30);
-
-    scene.add(new THREE.HemisphereLight(0xffffff, 0x1d5a36, 1.1));
-    const key = new THREE.DirectionalLight(0xffffff, 1.4); key.position.set(5, 8, 10); scene.add(key);
-    const rim = new THREE.DirectionalLight(0x9ad66b, 0.8); rim.position.set(-6, -4, -8); scene.add(rim);
-
-    // ----- build an alpha helix: 3.6 residues/turn, 1.5 Å rise, 2.3 Å radius -----
-    const group = new THREE.Group();
-    const residues = 18, rise = 1.5, radius = 2.3, step = (2 * Math.PI) / 3.6;
-    const pts = [];
-    for (let i = 0; i < residues; i++) {
-      const a = i * step, z = i * rise - (residues - 1) * rise / 2;
-      pts.push(new THREE.Vector3(radius * Math.cos(a), radius * Math.sin(a), z));
-    }
-
-    // backbone ribbon (tube through the C-alpha positions)
-    const curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal', 0.5);
-    const ribbonMat = new THREE.MeshStandardMaterial({ color: 0x2e7d4f, roughness: 0.45, metalness: 0.1 });
-    group.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 200, 0.45, 16, false), ribbonMat));
-
-    // C-alpha spheres + side-chain stubs
-    const caGeo = new THREE.SphereGeometry(0.72, 24, 24);
-    const caMat = new THREE.MeshStandardMaterial({ color: 0x9ad66b, roughness: 0.35 });
-    const scMat = new THREE.MeshStandardMaterial({ color: 0x6b3fa0, roughness: 0.4 });
-    const stubGeo = new THREE.CylinderGeometry(0.16, 0.16, 1.6, 10);
-    const scGeo = new THREE.SphereGeometry(0.42, 18, 18);
-    pts.forEach((p) => {
-      const ca = new THREE.Mesh(caGeo, caMat); ca.position.copy(p); group.add(ca);
-      // side chain points outward from the helix axis
-      const dir = new THREE.Vector3(p.x, p.y, 0).normalize();
-      const stub = new THREE.Mesh(stubGeo, scMat);
-      stub.position.copy(p).addScaledVector(dir, 0.8 + 0.8);
-      stub.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), dir);
-      group.add(stub);
-      const sc = new THREE.Mesh(scGeo, scMat);
-      sc.position.copy(p).addScaledVector(dir, 2.4);
-      group.add(sc);
+    // DAL (D-alanine) is a HETATM; treat it as backbone so the cartoon runs through it.
+    [pep, hex].forEach(function (m) {
+      m.selectedAtoms({ resn: 'DAL' }).forEach(function (a) { a.hetflag = false; });
     });
 
-    // lay the helix on a gentle diagonal
-    group.rotation.x = Math.PI / 2 - 0.25;
-    group.rotation.y = 0.35;
-    scene.add(group);
-
-    // drag to rotate, slow auto-spin otherwise
-    let dragging = false, lastX = 0, lastY = 0, velX = 0, velY = 0;
-    const el = renderer.domElement;
-    el.addEventListener('pointerdown', (e) => { dragging = true; lastX = e.clientX; lastY = e.clientY; el.setPointerCapture(e.pointerId); });
-    el.addEventListener('pointermove', (e) => {
-      if (!dragging) return;
-      velY = (e.clientX - lastX) * 0.01; velX = (e.clientY - lastY) * 0.01;
-      group.rotation.y += velY; group.rotation.x += velX;
-      lastX = e.clientX; lastY = e.clientY;
+    // First protein chain in the file is the peptide we show by itself.
+    var firstChain = null;
+    pep.selectedAtoms({}).some(function (a) {
+      if (!a.hetflag && a.atom === 'CA') { firstChain = a.chain; return true; }
+      return false;
     });
-    const stop = () => { dragging = false; };
-    el.addEventListener('pointerup', stop); el.addEventListener('pointercancel', stop); el.addEventListener('pointerleave', stop);
 
-    function resize() {
-      const w = host.clientWidth, h = host.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h; camera.updateProjectionMatrix();
-    }
-    new ResizeObserver(resize).observe(host); resize();
+    // ---- styles ----
+    pep.setStyle({}, {});                                       // draw nothing by default
+    pep.setStyle({ chain: firstChain, hetflag: false }, { cartoon: { color: LEAF, thickness: 0.5 } });
+    pep.setStyle({ chain: firstChain, hetflag: true, not: { resn: 'HOH' } },
+                 { stick: { colorscheme: 'purpleCarbon', radius: 0.22 } });
 
-    const clock = new THREE.Clock();
-    function tick() {
-      const dt = clock.getDelta();
-      if (!dragging) {
-        group.rotation.y += reduced ? 0 : 0.25 * dt;           // slow spin
-        velX *= 0.9; velY *= 0.9;                               // let a flick coast
-        group.rotation.y += velY; group.rotation.x += velX;
-        if (!reduced) group.position.y = Math.sin(clock.elapsedTime * 0.8) * 0.25; // gentle bob
+    // Symmetry copies are appended after the asymmetric unit, so atom index tells us which copy
+    // an atom belongs to; combine that with the chain letter to alternate shades across the hexamer.
+    var asuAtoms = pep.selectedAtoms({}).length || 1;
+    hex.setStyle({}, {});
+    hex.setStyle({ hetflag: false }, { cartoon: {
+      colorfunc: function (a) {
+        var copy = Math.floor((a.index || 0) / asuAtoms), ch = a.chain ? a.chain.charCodeAt(0) : 0;
+        return CHAIN_SHADES[(copy + ch) % CHAIN_SHADES.length];
+      },
+      thickness: 0.45 } });
+    hex.setStyle({ hetflag: true, not: { resn: 'HOH' } }, { stick: { colorscheme: 'purpleCarbon', radius: 0.2 } });
+
+    // Principal axis of a set of atoms (power iteration on the covariance matrix) so we can
+    // lay the molecule across the view instead of leaving it end-on.
+    function principalAxis(atoms) {
+      var n = atoms.length, cx = 0, cy = 0, cz = 0;
+      atoms.forEach(function (a) { cx += a.x; cy += a.y; cz += a.z; });
+      cx /= n; cy /= n; cz /= n;
+      var xx = 0, xy = 0, xz = 0, yy = 0, yz = 0, zz = 0;
+      atoms.forEach(function (a) {
+        var dx = a.x - cx, dy = a.y - cy, dz = a.z - cz;
+        xx += dx * dx; xy += dx * dy; xz += dx * dz; yy += dy * dy; yz += dy * dz; zz += dz * dz;
+      });
+      var v = { x: 1, y: 0.3, z: 0.2 };
+      for (var i = 0; i < 40; i++) {
+        var nx = xx * v.x + xy * v.y + xz * v.z, ny = xy * v.x + yy * v.y + yz * v.z, nz = xz * v.x + yz * v.y + zz * v.z;
+        var len = Math.sqrt(nx * nx + ny * ny + nz * nz) || 1;
+        v = { x: nx / len, y: ny / len, z: nz / len };
       }
-      renderer.render(scene, camera);
-      requestAnimationFrame(tick);
+      return v;
     }
-    tick();
-  }
+    function layFlat(model, sel) {
+      var atoms = model.selectedAtoms(sel);
+      if (atoms.length < 3) return;
+      var v = principalAxis(atoms);
+      // rotate the model's long axis onto a line running up-and-across the screen
+      var target = { x: 0.85, y: 0.45, z: 0 }, tl = Math.hypot(target.x, target.y, target.z);
+      target = { x: target.x / tl, y: target.y / tl, z: target.z / tl };
+      var dot = Math.max(-1, Math.min(1, v.x * target.x + v.y * target.y + v.z * target.z));
+      var angle = Math.acos(dot) * 180 / Math.PI;
+      var axis = { x: v.y * target.z - v.z * target.y, y: v.z * target.x - v.x * target.z, z: v.x * target.y - v.y * target.x };
+      var al = Math.hypot(axis.x, axis.y, axis.z);
+      if (al < 1e-6 || angle < 1) return;
+      viewer.rotate(angle, { x: axis.x / al, y: axis.y / al, z: axis.z / al });
+    }
+
+    var models = { peptide: pep, hexamer: hex };
+    var oriented = false;
+    function show(which) {
+      Object.keys(models).forEach(function (k) { if (k === which) models[k].show(); else models[k].hide(); });
+      if (!oriented) { layFlat(pep, { chain: firstChain, atom: 'CA' }); oriented = true; }
+      viewer.zoomTo({ model: models[which], not: { resn: 'HOH' } });
+      viewer.zoom(which === 'peptide' ? 1.15 : 1.05);
+      viewer.render();
+      document.querySelectorAll('#views button').forEach(function (b) {
+        b.classList.toggle('on', b.getAttribute('data-view') === which);
+      });
+    }
+    document.querySelectorAll('#views button').forEach(function (b) {
+      b.addEventListener('click', function () { show(b.getAttribute('data-view')); });
+    });
+
+    show('peptide');
+    status.classList.add('hidden');
+    if (!reduced) viewer.spin('y', 0.25, true);               // slow spin; pauses when off-screen
+  }).catch(function (err) {
+    console.error(err);
+    fail('Couldn\'t load PDB 6B17.\nCheck your connection and reload.');
+  });
+})();
 </script>
 </body>
 </html>
