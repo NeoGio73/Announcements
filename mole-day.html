@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mole Day Announcement</title>
+</head>
+<body style="margin:0;padding:16px;background:#E6EBF2;">
+
+<!-- ================= COPY FROM HERE (paste into the announcement's Source Code view) ================= -->
+<div class="md-wrap">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,700;1,400&family=Zilla+Slab:wght@600;700&display=swap');
+
+.md-wrap{--ink:#1C2B4A;--ink-soft:#4A5A77;--paper:#F6F8FB;--rule:#C9D5E3;--gold:#F2B33D;--teal:#1F7F86;--cream:#FDF8EC;
+  max-width:780px;margin:0 auto;color:var(--ink);background-color:var(--paper);
+  background-image:linear-gradient(rgba(28,43,74,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(28,43,74,.05) 1px,transparent 1px);
+  background-size:22px 22px;border:2px solid var(--ink);border-radius:16px;overflow:hidden;
+  font-family:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;font-size:17px;line-height:1.6;text-align:left}
+.md-wrap *{box-sizing:border-box}
+.md-wrap h2,.md-wrap h3{font-family:"Zilla Slab",Rockwell,"Roboto Slab",Georgia,serif;font-weight:700;line-height:1.1;margin:0;padding:0;border:0}
+.md-wrap sup,.md-wrap sub{font-size:.72em;line-height:0}
+.md-wrap p{margin:0 0 14px;max-width:40em}
+
+/* hero */
+.md-hero{background-color:var(--ink);
+  background-image:linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22px 22px;color:var(--cream);padding:28px 28px 4px}
+.md-hero-top{display:flex;align-items:flex-end;justify-content:space-between;gap:8px 20px;flex-wrap:wrap}
+.md-hero-text{flex:1 1 300px;min-width:0}
+.md-wrap .md-title{font-size:clamp(40px,8vw,62px);color:var(--cream);letter-spacing:-.01em}
+.md-wrap .md-when{margin:12px 0 8px;color:var(--gold);font-weight:700;font-size:19px;line-height:1.35}
+.md-wrap .md-lede{margin:0 0 6px;color:#D8E0EC;max-width:34em}
+.md-mascot{flex:0 0 160px;width:160px;height:auto;display:block;margin-left:auto}
+.md-hero figure{margin:10px 0 0;padding:0}
+.md-decode{width:100%;height:auto;display:block}
+.md-hero figcaption{color:#B7C3D6;font-size:14px;line-height:1.5;padding:2px 0 18px}
+.md-hero figcaption b{color:var(--cream)}
+
+/* sections */
+.md-sec{padding:26px 28px 14px;border-top:1.5px solid var(--rule)}
+.md-wrap .md-sec h3{font-size:29px;color:var(--ink);margin:0 0 12px}
+.md-hl{background:linear-gradient(transparent 52%,rgba(242,179,61,.55) 52%);padding:0 2px;font-weight:700}
+.md-fig{margin:18px 0 18px;background:#fff;border:1.5px solid var(--ink);border-radius:12px;padding:14px 16px 12px}
+.md-fig svg{width:100%;height:auto;display:block}
+.md-fig figcaption{font-size:14.5px;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+.md-fig figcaption b{color:var(--ink)}
+
+/* ledger (figure 2) */
+.md-row{display:grid;grid-template-columns:72px 1fr;align-items:center;gap:16px;padding:12px 6px}
+.md-row+.md-row{border-top:1px solid var(--rule)}
+.md-row svg{width:72px;height:auto;display:block}
+.md-unit{font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:22px}
+.md-eq{color:var(--ink-soft)}
+.md-row-mole{background:#FDF3DC;border-radius:8px}
+.md-big{display:block;font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:clamp(19px,4.3vw,31px);line-height:1.2;color:var(--ink);margin:4px 0 2px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+
+/* scale facts */
+.md-facts{list-style:none;margin:4px 0 6px;padding:0}
+.md-facts li{display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:start;padding:14px 0;border-top:1px dashed var(--rule);margin:0}
+.md-facts li:first-child{border-top:0}
+.md-facts svg{width:56px;height:56px;display:block}
+.md-fact-num{display:block;font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:27px;line-height:1.15;margin-bottom:2px}
+.md-facts p{margin:0}
+
+/* challenge */
+.md-q{background:#fff;border:1.5px solid var(--ink);border-left:8px solid var(--gold);border-radius:12px;padding:16px 18px;margin:6px 0 16px}
+.md-q details summary{display:inline-block;cursor:pointer;list-style:none;background:var(--gold);color:var(--ink);font-weight:700;border:2px solid var(--ink);border-radius:999px;padding:6px 18px}
+.md-q details summary::-webkit-details-marker{display:none}
+.md-q details summary:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.md-q details[open] summary{background:#fff}
+.md-sol{margin-top:12px;padding:12px 14px;background:var(--paper);border-radius:8px;font-variant-numeric:tabular-nums}
+.md-sol p{margin:0 0 6px}
+.md-sol p:last-child{margin:0}
+
+/* footer */
+.md-foot{padding:22px 28px 26px;border-top:1.5px solid var(--rule);background:#EDF1F6}
+.md-foot p{font-size:15.5px;color:var(--ink-soft)}
+.md-wrap .md-sign{font-family:"Zilla Slab",Rockwell,Georgia,serif;font-weight:700;font-size:24px;color:var(--ink);margin:4px 0 0;line-height:1.25}
+
+@media (max-width:560px){
+  .md-wrap{font-size:16px;border-radius:12px}
+  .md-hero{padding:22px 16px 2px}
+  .md-hero-text{flex-basis:190px}
+  .md-mascot{flex-basis:108px;width:108px}
+  .md-sec{padding:22px 16px 10px}
+  .md-foot{padding:20px 16px 22px}
+  .md-wrap .md-sec h3{font-size:25px}
+  .md-fig{padding:10px 10px 10px}
+  .md-row{grid-template-columns:50px 1fr;gap:10px;padding:10px 4px}
+  .md-row svg{width:50px}
+  .md-facts li{grid-template-columns:44px 1fr;gap:12px}
+  .md-facts svg{width:44px;height:44px}
+  .md-fact-num{font-size:23px}
+}
+
+/* ---------- motion (skipped automatically for people who turn animations off) ---------- */
+@keyframes md-g6 {0%,30%,98%,100%{transform:translate(440px,132px)}45%,86%{transform:translate(186px,128px)}}
+@keyframes md-g02{0%,30%,98%,100%{transform:translate(525px,132px)}45%,86%{transform:translate(260px,128px)}}
+@keyframes md-g10{0%,30%,98%,100%{transform:translate(105px,132px)}45%,86%{transform:translate(394px,128px)}}
+@keyframes md-g23{0%,30%,98%,100%{transform:translate(195px,132px)}45%,86%{transform:translate(444px,92px)}}
+@keyframes md-s85{0%,30%,98%,100%{transform:scale(.85)}45%,86%{transform:scale(1)}}
+@keyframes md-s23{0%,30%,98%,100%{transform:scale(.85)}45%,86%{transform:scale(.55)}}
+@keyframes md-out{0%,30%{opacity:1}40%,88%{opacity:0}98%,100%{opacity:1}}
+@keyframes md-in {0%,34%{opacity:0}45%,86%{opacity:1}92%,100%{opacity:0}}
+@keyframes md-fcal{0%,30%,98%,100%{fill:#1C2B4A}45%,86%{fill:#FDF8EC}}
+@keyframes md-fclk{0%,30%,98%,100%{fill:#F2B33D}45%,86%{fill:#FDF8EC}}
+
+@keyframes md-pop{0%{transform:translateY(112px)}70%{transform:translateY(-6px)}100%{transform:translateY(0)}}
+@keyframes md-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes md-blink{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
+@keyframes md-wave{0%,40%,100%{transform:rotate(0)}8%,24%{transform:rotate(-24deg)}16%,32%{transform:rotate(6deg)}}
+
+@keyframes md-flowR{0%{transform:translateX(0);opacity:0}15%,80%{opacity:1}100%{transform:translateX(80px);opacity:0}}
+@keyframes md-flowL{0%{transform:translateX(0);opacity:0}15%,80%{opacity:1}100%{transform:translateX(-80px);opacity:0}}
+@keyframes md-jig{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-2px)}50%{transform:translate(-1px,2px)}75%{transform:translate(-2px,-1px)}}
+
+@keyframes md-ha{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(352.6px,15.5px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-hb{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(363.4px,15.5px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-hc{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(412.6px,15.5px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-hd{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(423.4px,15.5px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-oa{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(198px,2px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-ob{0%,25%{transform:translate(0,0)}50%,90%{transform:translate(308px,2px)}91%,100%{transform:translate(0,0)}}
+@keyframes md-cycle{0%,86%{opacity:1}89%,92%{opacity:0}97%,100%{opacity:1}}
+@keyframes md-arrow{0%,20%{stroke:#1C2B4A}32%,46%{stroke:#F2B33D}58%,100%{stroke:#1C2B4A}}
+
+@media (prefers-reduced-motion:no-preference){
+  .md-g6 {animation:md-g6 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-g02{animation:md-g02 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-g10{animation:md-g10 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-g23{animation:md-g23 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-s85{animation:md-s85 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-s23{animation:md-s23 9s cubic-bezier(.6,0,.2,1) infinite}
+  .md-out{animation:md-out 9s ease infinite}
+  .md-in {animation:md-in 9s ease infinite}
+  .md-fcal{animation:md-fcal 9s ease infinite}
+  .md-fclk{animation:md-fclk 9s ease infinite}
+
+  .md-pop{animation:md-pop .9s .25s cubic-bezier(.2,.8,.3,1) both}
+  .md-bob{animation:md-bob 2.6s 1.3s ease-in-out infinite}
+  .md-eye{transform-box:fill-box;transform-origin:center;animation:md-blink 4.5s 1.5s infinite}
+  .md-wave{transform-box:fill-box;transform-origin:15% 90%;animation:md-wave 5s 1.4s ease-in-out infinite}
+
+  .md-dotR{animation:md-flowR 2.4s linear infinite}
+  .md-dotL{animation:md-flowL 2.4s linear infinite}
+  .md-d2{animation-delay:-.8s}
+  .md-d3{animation-delay:-1.6s}
+  .md-jig{animation:md-jig 2.2s ease-in-out infinite}
+  .md-j2{animation-duration:2.7s;animation-delay:-.6s}
+  .md-j3{animation-duration:1.9s;animation-delay:-1.1s}
+  .md-j4{animation-duration:2.5s;animation-delay:-.3s}
+  .md-j5{animation-duration:3.1s;animation-delay:-1.7s}
+
+  .md-ha{animation:md-ha 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-hb{animation:md-hb 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-hc{animation:md-hc 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-hd{animation:md-hd 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-oa{animation:md-oa 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-ob{animation:md-ob 8s cubic-bezier(.6,0,.2,1) infinite}
+  .md-atoms{animation:md-cycle 8s linear infinite}
+  .md-rxn-arrow{animation:md-arrow 8s ease infinite}
+  .md-ghost{display:none}
+}
+</style>
+
+<!-- ============ HERO ============ -->
+<div class="md-hero">
+  <div class="md-hero-top">
+    <div class="md-hero-text">
+      <h2 class="md-title">Happy Mole Day!</h2>
+      <p class="md-when">Friday, October 23, from 6:02 a.m. to 6:02 p.m.</p>
+      <p class="md-lede">On Friday, chemists everywhere celebrate the mole, the counting unit that connects atoms you can't see to grams you can weigh. The date and time aren't random: 10/23 at 6:02 spells out Avogadro's number.</p>
+    </div>
+
+    <svg class="md-mascot" viewBox="0 0 200 190" aria-hidden="true" focusable="false">
+      <defs><clipPath id="md-hole-clip"><rect x="0" y="0" width="200" height="161"/></clipPath></defs>
+      <ellipse cx="100" cy="168" rx="90" ry="20" fill="#6E4A31"/>
+      <ellipse cx="100" cy="160" rx="52" ry="13" fill="#24170F"/>
+      <g clip-path="url(#md-hole-clip)">
+        <g class="md-pop"><g class="md-bob">
+          <ellipse cx="100" cy="112" rx="44" ry="52" fill="#6F5847"/>
+          <ellipse cx="100" cy="132" rx="27" ry="30" fill="#9C846D"/>
+          <rect x="63" y="79" width="74" height="8" rx="3" fill="#F2B33D"/>
+          <circle cx="86" cy="84" r="12.5" fill="#CFEAF5" stroke="#1C2B4A" stroke-width="3"/>
+          <circle cx="114" cy="84" r="12.5" fill="#CFEAF5" stroke="#1C2B4A" stroke-width="3"/>
+          <ellipse class="md-eye" cx="86" cy="86" rx="3.6" ry="4.2" fill="#1A1310"/>
+          <ellipse class="md-eye" cx="114" cy="86" rx="3.6" ry="4.2" fill="#1A1310"/>
+          <circle cx="90" cy="80" r="2.6" fill="#fff" opacity=".9"/>
+          <circle cx="118" cy="80" r="2.6" fill="#fff" opacity=".9"/>
+          <g stroke="#E8DCCD" stroke-width="1.5" stroke-linecap="round">
+            <line x1="88" y1="106" x2="68" y2="101"/><line x1="88" y1="110" x2="68" y2="112"/>
+            <line x1="112" y1="106" x2="132" y2="101"/><line x1="112" y1="110" x2="132" y2="112"/>
+          </g>
+          <ellipse cx="100" cy="105" rx="10.5" ry="7.5" fill="#F08FA2"/>
+          <circle cx="96.5" cy="106" r="1.4" fill="#8A3B4A"/><circle cx="103.5" cy="106" r="1.4" fill="#8A3B4A"/>
+          <path d="M93,116 Q100,122 107,116" fill="none" stroke="#2B1C14" stroke-width="2" stroke-linecap="round"/>
+          <ellipse cx="66" cy="150" rx="15" ry="9" fill="#F2A9B6" transform="rotate(-15 66 150)"/>
+          <g stroke="#B9707E" stroke-width="1.4" stroke-linecap="round"><line x1="56" y1="146" x2="52" y2="142"/><line x1="61" y1="143" x2="58" y2="138"/><line x1="67" y1="141" x2="65" y2="136"/></g>
+          <g class="md-wave">
+            <ellipse cx="146" cy="112" rx="12" ry="15" fill="#F2A9B6" transform="rotate(18 146 112)"/>
+            <g stroke="#B9707E" stroke-width="1.4" stroke-linecap="round"><line x1="146" y1="98" x2="147" y2="92"/><line x1="152" y1="100" x2="155" y2="95"/><line x1="140" y1="99" x2="139" y2="93"/></g>
+          </g>
+        </g></g>
+      </g>
+      <path d="M48,160 A52,13 0 0 0 152,160 L188,166 A90,20 0 0 1 12,166 Z" fill="#8D5E3E"/>
+      <circle cx="30" cy="160" r="3" fill="#8D5E3E"/><circle cx="172" cy="158" r="2.5" fill="#8D5E3E"/><circle cx="160" cy="152" r="2" fill="#8D5E3E"/>
+    </svg>
+  </div>
+
+  <figure>
+    <svg class="md-decode" viewBox="0 0 640 200" role="img" aria-label="The date 10/23 and the time 6:02 rearrange into the number 6.02 times 10 to the 23rd." font-family="'Zilla Slab', Rockwell, Georgia, serif" font-weight="700">
+      <!-- calendar page -->
+      <g class="md-out" opacity="0">
+        <rect x="50" y="34" width="200" height="132" rx="12" fill="#FDF8EC"/>
+        <path d="M50,68 V46 A12,12 0 0 1 62,34 H238 A12,12 0 0 1 250,46 V68 Z" fill="#F2B33D"/>
+        <rect x="86" y="26" width="8" height="18" rx="4" fill="#1C2B4A"/><rect x="206" y="26" width="8" height="18" rx="4" fill="#1C2B4A"/>
+        <text x="150" y="58" text-anchor="middle" font-size="19" fill="#1C2B4A">Friday</text>
+      </g>
+      <!-- clock -->
+      <g class="md-out" opacity="0">
+        <rect x="390" y="34" width="200" height="132" rx="12" fill="#0F1A30" stroke="#F2B33D" stroke-width="2"/>
+        <text x="490" y="156" text-anchor="middle" font-size="16" font-weight="600" fill="#F8D88E">a.m. and p.m.</text>
+      </g>
+      <!-- pieces: base position = the assembled number -->
+      <g class="md-out" opacity="0" transform="translate(150 132) scale(.85)"><text text-anchor="middle" font-size="64" fill="#1C2B4A">/</text></g>
+      <g class="md-out" opacity="0" transform="translate(475 125) scale(.85)"><text text-anchor="middle" font-size="64" fill="#F2B33D">:</text></g>
+      <g class="md-g10" transform="translate(394 128)"><g class="md-s85"><text class="md-fcal" text-anchor="middle" font-size="64" fill="#FDF8EC">10</text></g></g>
+      <g class="md-g23" transform="translate(444 92)"><g class="md-s23" transform="scale(.55)"><text class="md-fcal" text-anchor="middle" font-size="64" fill="#FDF8EC">23</text></g></g>
+      <g class="md-g6" transform="translate(186 128)"><g class="md-s85"><text class="md-fclk" text-anchor="middle" font-size="64" fill="#FDF8EC">6</text></g></g>
+      <g class="md-g02" transform="translate(260 128)"><g class="md-s85"><text class="md-fclk" text-anchor="middle" font-size="64" fill="#FDF8EC">02</text></g></g>
+      <text class="md-in" x="214" y="128" text-anchor="middle" font-size="64" fill="#FDF8EC">.</text>
+      <text class="md-in" x="327" y="124" text-anchor="middle" font-size="52" fill="#FDF8EC">×</text>
+      <text class="md-in" x="320" y="178" text-anchor="middle" font-size="21" font-weight="600" fill="#F2B33D">particles in one mole</text>
+    </svg>
+    <figcaption><b>Figure 1.</b> The date 10/23 and the time 6:02 rearrange into Avogadro's number, 6.02&nbsp;×&nbsp;10<sup>23</sup>.</figcaption>
+  </figure>
+</div>
+
+<!-- ============ WHAT IS A MOLE ============ -->
+<div class="md-sec">
+  <h3>What is a mole?</h3>
+  <p>A mole is a counting unit, just like a dozen. A dozen is always 12; a mole is always <span class="md-hl">6.02214076&nbsp;×&nbsp;10<sup>23</sup></span> of something: atoms, molecules, ions, even jelly beans. Since 2019 that value has been exact, because it now defines the SI unit itself.</p>
+
+  <figure class="md-fig">
+    <div class="md-row">
+      <svg viewBox="0 0 72 48" aria-hidden="true" focusable="false">
+        <rect x="2" y="5" width="68" height="38" rx="5" fill="#E4D3B8" stroke="#1C2B4A" stroke-width="1.5"/>
+        <g fill="#FFF8EE" stroke="#1C2B4A" stroke-width="1.2">
+          <ellipse cx="9.5" cy="16" rx="4.4" ry="5.2"/><ellipse cx="20" cy="16" rx="4.4" ry="5.2"/><ellipse cx="30.5" cy="16" rx="4.4" ry="5.2"/><ellipse cx="41" cy="16" rx="4.4" ry="5.2"/><ellipse cx="51.5" cy="16" rx="4.4" ry="5.2"/><ellipse cx="62" cy="16" rx="4.4" ry="5.2"/>
+          <ellipse cx="9.5" cy="32" rx="4.4" ry="5.2"/><ellipse cx="20" cy="32" rx="4.4" ry="5.2"/><ellipse cx="30.5" cy="32" rx="4.4" ry="5.2"/><ellipse cx="41" cy="32" rx="4.4" ry="5.2"/><ellipse cx="51.5" cy="32" rx="4.4" ry="5.2"/><ellipse cx="62" cy="32" rx="4.4" ry="5.2"/>
+        </g>
+      </svg>
+      <div><span class="md-unit">1 dozen</span> <span class="md-eq">= 12 eggs</span></div>
+    </div>
+    <div class="md-row">
+      <svg viewBox="0 0 72 48" aria-hidden="true" focusable="false">
+        <rect x="8" y="6" width="56" height="38" rx="2" fill="#fff" stroke="#1C2B4A" stroke-width="1.5"/>
+        <g stroke="#C9D5E3" stroke-width="1.2"><line x1="9" y1="13" x2="63" y2="13"/><line x1="9" y1="19" x2="63" y2="19"/><line x1="9" y1="25" x2="63" y2="25"/><line x1="9" y1="31" x2="63" y2="31"/><line x1="9" y1="37" x2="63" y2="37"/></g>
+        <rect x="30" y="6" width="12" height="38" fill="#F2B33D" stroke="#1C2B4A" stroke-width="1.2"/>
+      </svg>
+      <div><span class="md-unit">1 ream</span> <span class="md-eq">= 500 sheets of paper</span></div>
+    </div>
+    <div class="md-row md-row-mole">
+      <svg viewBox="0 0 72 48" aria-hidden="true" focusable="false">
+        <g stroke="#1C2B4A" stroke-width="1.2">
+          <circle cx="14" cy="34" r="8" fill="#1F7F86"/><circle cx="30" cy="36" r="8" fill="#D9483B"/><circle cx="46" cy="35" r="8" fill="#F2B33D"/><circle cx="61" cy="36" r="7" fill="#1F7F86"/>
+          <circle cx="22" cy="21" r="8" fill="#F2B33D"/><circle cx="38" cy="21" r="8" fill="#1F7F86"/><circle cx="54" cy="22" r="7" fill="#D9483B"/>
+          <circle cx="30" cy="8" r="6.5" fill="#D9483B"/><circle cx="46" cy="9" r="6" fill="#F2B33D"/>
+        </g>
+      </svg>
+      <div>
+        <span class="md-unit">1 mole</span> <span class="md-eq">=</span>
+        <span class="md-big">602,<wbr>214,<wbr>076,<wbr>000,<wbr>000,<wbr>000,<wbr>000,<wbr>000</span>
+        <span class="md-eq">particles (atoms, molecules, ions, anything)</span>
+      </div>
+    </div>
+    <figcaption><b>Figure 2.</b> Same idea, very different size. Written out in full, one mole is a 24-digit number.</figcaption>
+  </figure>
+</div>
+
+<!-- ============ WHY IT MATTERS ============ -->
+<div class="md-sec">
+  <h3>Why the mole matters</h3>
+  <p>Atoms are far too small to count one at a time, but we can weigh them by the trillions of trillions. The mole is the bridge between those two worlds: one mole of any substance has a mass in grams equal to its formula mass. One mole of water molecules is 18.02&nbsp;g, a little more than a tablespoon.</p>
+
+  <figure class="md-fig">
+    <svg viewBox="0 0 640 226" role="img" aria-label="Particles convert to moles by dividing by Avogadro's number, and moles convert to grams by multiplying by the molar mass. One mole of water is 18.02 grams." font-family="'Source Sans 3', 'Segoe UI', sans-serif">
+      <!-- particles -->
+      <circle cx="90" cy="96" r="62" fill="#E7F2F3" stroke="#1F7F86" stroke-width="2" stroke-dasharray="5 5"/>
+      <g stroke="#1C2B4A" stroke-width="1.2">
+        <g transform="translate(66 72)"><g class="md-jig"><circle cx="-7" cy="5" r="5" fill="#fff"/><circle cx="7" cy="5" r="5" fill="#fff"/><circle r="8" fill="#D9483B"/></g></g>
+        <g transform="translate(113 78)"><g class="md-jig md-j2"><circle cx="-7" cy="5" r="5" fill="#fff"/><circle cx="7" cy="5" r="5" fill="#fff"/><circle r="8" fill="#D9483B"/></g></g>
+        <g transform="translate(62 116)"><g class="md-jig md-j3"><circle cx="-7" cy="5" r="5" fill="#fff"/><circle cx="7" cy="5" r="5" fill="#fff"/><circle r="8" fill="#D9483B"/></g></g>
+        <g transform="translate(110 122)"><g class="md-jig md-j4"><circle cx="-7" cy="5" r="5" fill="#fff"/><circle cx="7" cy="5" r="5" fill="#fff"/><circle r="8" fill="#D9483B"/></g></g>
+        <g transform="translate(88 98)"><g class="md-jig md-j5"><circle cx="-7" cy="5" r="5" fill="#fff"/><circle cx="7" cy="5" r="5" fill="#fff"/><circle r="8" fill="#D9483B"/></g></g>
+      </g>
+      <!-- moles -->
+      <circle cx="320" cy="96" r="62" fill="#F2B33D" stroke="#1C2B4A" stroke-width="2"/>
+      <text x="320" y="107" text-anchor="middle" font-family="'Zilla Slab', Rockwell, Georgia, serif" font-weight="700" font-size="32" fill="#1C2B4A">1 mol</text>
+      <!-- grams: beaker on a balance -->
+      <rect x="533" y="88" width="34" height="28" fill="#9FD3D8"/>
+      <path d="M528,68 H534 V114 A4,4 0 0 0 538,118 H562 A4,4 0 0 0 566,114 V68 H572" fill="none" stroke="#1C2B4A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round"/>
+      <g stroke="#1C2B4A" stroke-width="1.2"><line x1="534" y1="80" x2="542" y2="80"/><line x1="534" y1="92" x2="542" y2="92"/><line x1="534" y1="104" x2="542" y2="104"/></g>
+      <rect x="498" y="118" width="104" height="8" rx="3" fill="#1C2B4A"/>
+      <path d="M490,170 L500,130 H600 L610,170 Z" fill="#E9EEF4" stroke="#1C2B4A" stroke-width="2" stroke-linejoin="round"/>
+      <rect x="515" y="139" width="70" height="23" rx="4" fill="#1C2B4A"/>
+      <text x="550" y="156" text-anchor="middle" font-family="'Zilla Slab', Rockwell, Georgia, serif" font-weight="700" font-size="16" fill="#F2B33D">18.02 g</text>
+      <!-- arrows -->
+      <g fill="none" stroke="#1C2B4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M158,82 H250 M242,76 L252,82 L242,88"/>
+        <path d="M252,112 H160 M168,106 L158,112 L168,118"/>
+        <path d="M388,82 H480 M472,76 L482,82 L472,88"/>
+        <path d="M482,112 H390 M398,106 L388,112 L398,118"/>
+      </g>
+      <g font-size="19" font-weight="700" fill="#1C2B4A" text-anchor="middle">
+        <text x="205" y="68">÷ N<tspan font-size="13" dy="4">A</tspan></text>
+        <text x="205" y="138">× N<tspan font-size="13" dy="4">A</tspan></text>
+        <text x="435" y="68">× M</text>
+        <text x="435" y="138">÷ M</text>
+      </g>
+      <!-- flowing dots -->
+      <circle class="md-dotR" cx="164" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotR md-d2" cx="164" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotR md-d3" cx="164" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotL" cx="246" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <circle class="md-dotL md-d2" cx="246" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <circle class="md-dotL md-d3" cx="246" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <circle class="md-dotR" cx="394" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotR md-d2" cx="394" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotR md-d3" cx="394" cy="82" r="4.5" fill="#1F7F86" opacity="0"/>
+      <circle class="md-dotL" cx="476" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <circle class="md-dotL md-d2" cx="476" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <circle class="md-dotL md-d3" cx="476" cy="112" r="4.5" fill="#C98A12" opacity="0"/>
+      <!-- labels -->
+      <g text-anchor="middle">
+        <text x="90" y="190" font-size="20" font-weight="700" fill="#1C2B4A">Particles</text>
+        <text x="320" y="190" font-size="20" font-weight="700" fill="#1C2B4A">Moles</text>
+        <text x="550" y="190" font-size="20" font-weight="700" fill="#1C2B4A">Grams</text>
+        <text x="90" y="213" font-size="15" fill="#4A5A77">too many to count</text>
+        <text x="320" y="213" font-size="15" fill="#4A5A77">the counting unit</text>
+        <text x="550" y="213" font-size="15" fill="#4A5A77">measured on a balance</text>
+      </g>
+    </svg>
+    <figcaption><b>Figure 3.</b> One mole of water, three ways. Divide by Avogadro's number (N<sub>A</sub> = 6.022 × 10<sup>23</sup> per mole) to go from particles to moles, then multiply by the molar mass (M = 18.02 g/mol for water) to go from moles to grams. Every stoichiometry problem travels this path.</figcaption>
+  </figure>
+
+  <p>Chemical equations are written in moles, too. The coefficients in 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O give the ratio of moles that react, and molar masses turn that ratio into grams you can actually measure. It's how pharmacists calculate doses, how engineers plan fuel loads, and how you'll solve every reaction problem this semester.</p>
+
+  <figure class="md-fig">
+    <svg viewBox="0 0 640 228" role="img" aria-label="Two hydrogen molecules and one oxygen molecule rearrange into two water molecules. 2 moles plus 1 mole gives 2 moles; 4.03 grams plus 32.00 grams gives 36.03 grams." font-family="'Source Sans 3', 'Segoe UI', sans-serif">
+      <!-- static products (shown only when animation is off) -->
+      <g class="md-ghost" stroke="#1C2B4A" stroke-width="1.5">
+        <circle cx="402.6" cy="79.5" r="14" fill="#fff"/><circle cx="437.4" cy="79.5" r="14" fill="#fff"/><circle cx="420" cy="66" r="19" fill="#D9483B"/>
+        <circle cx="542.6" cy="79.5" r="14" fill="#fff"/><circle cx="577.4" cy="79.5" r="14" fill="#fff"/><circle cx="560" cy="66" r="19" fill="#D9483B"/>
+      </g>
+      <!-- moving atoms (start as reactants) -->
+      <g class="md-atoms" stroke="#1C2B4A" stroke-width="1.5">
+        <circle class="md-ha" cx="50" cy="64" r="14" fill="#fff"/>
+        <circle class="md-hb" cx="74" cy="64" r="14" fill="#fff"/>
+        <circle class="md-hc" cx="130" cy="64" r="14" fill="#fff"/>
+        <circle class="md-hd" cx="154" cy="64" r="14" fill="#fff"/>
+        <circle class="md-oa" cx="222" cy="64" r="19" fill="#D9483B"/>
+        <circle class="md-ob" cx="252" cy="64" r="19" fill="#D9483B"/>
+      </g>
+      <text x="186" y="73" text-anchor="middle" font-size="26" font-weight="700" fill="#1C2B4A">+</text>
+      <path class="md-rxn-arrow" d="M294,66 H350 M340,58 L352,66 L340,74" fill="none" stroke="#1C2B4A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- rows -->
+      <g text-anchor="middle" fill="#1C2B4A">
+        <g font-family="'Zilla Slab', Rockwell, Georgia, serif" font-weight="700" font-size="24">
+          <text x="102" y="134">2 H₂</text><text x="186" y="134">+</text><text x="237" y="134">O₂</text><text x="322" y="134">→</text><text x="490" y="134">2 H₂O</text>
+        </g>
+        <line x1="0" y1="148" x2="640" y2="148" stroke="#C9D5E3" stroke-width="1.2"/>
+        <rect x="446" y="191" width="88" height="29" rx="5" fill="#FBE6B5"/>
+        <g font-size="19">
+          <text x="102" y="178">2 mol</text><text x="186" y="178">+</text><text x="237" y="178">1 mol</text><text x="322" y="178">→</text><text x="490" y="178">2 mol</text>
+          <text x="102" y="212">4.03 g</text><text x="186" y="212">+</text><text x="237" y="212">32.00 g</text><text x="322" y="212">→</text><text x="490" y="212" font-weight="700">36.03 g</text>
+        </g>
+      </g>
+      <g font-size="13" fill="#4A5A77"><text x="0" y="177">moles</text><text x="0" y="211">grams</text></g>
+    </svg>
+    <figcaption><b>Figure 4.</b> Reading 2 H<sub>2</sub> + O<sub>2</sub> → 2 H<sub>2</sub>O in moles. The atoms only rearrange, so 4.03 g of hydrogen and 32.00 g of oxygen make exactly 36.03 g of water.</figcaption>
+  </figure>
+</div>
+
+<!-- ============ HOW BIG ============ -->
+<div class="md-sec">
+  <h3>Just how big is 6.02 × 10<sup>23</sup>?</h3>
+  <ul class="md-facts">
+    <li>
+      <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+        <rect x="12" y="5" width="32" height="5" rx="2" fill="#1C2B4A"/><rect x="12" y="46" width="32" height="5" rx="2" fill="#1C2B4A"/>
+        <path d="M16,10 C16,23 26,24 26,28 C26,32 16,33 16,46 H40 C40,33 30,32 30,28 C30,24 40,23 40,10 Z" fill="#E7F2F3" stroke="#1C2B4A" stroke-width="2"/>
+        <path d="M20,17 H36 C35,22 30,24 28,26 C26,24 21,22 20,17 Z" fill="#F2B33D"/>
+        <path d="M18,44 C20,37 25,35 28,35 C31,35 36,37 38,44 Z" fill="#F2B33D"/>
+        <line x1="28" y1="27" x2="28" y2="35" stroke="#F2B33D" stroke-width="1.6" stroke-dasharray="2 2"/>
+      </svg>
+      <div><span class="md-fact-num">2.4 million years</span><p>If all 8 billion people on Earth counted one atom per second, around the clock, it would take them about 2.4 million years to count one mole.</p></div>
+    </li>
+    <li>
+      <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+        <g fill="#fff" stroke="#1C2B4A" stroke-width="1.6"><rect x="12" y="40" width="32" height="8" rx="1"/><rect x="14" y="32" width="32" height="8" rx="1"/><rect x="11" y="24" width="32" height="8" rx="1"/><rect x="13" y="16" width="32" height="8" rx="1"/></g>
+        <path d="M44,4 L45.6,8.4 L50,10 L45.6,11.6 L44,16 L42.4,11.6 L38,10 L42.4,8.4 Z" fill="#F2B33D"/>
+        <circle cx="16" cy="8" r="1.8" fill="#1F7F86"/><circle cx="28" cy="5" r="1.4" fill="#1F7F86"/>
+      </svg>
+      <div><span class="md-fact-num">6,400 light-years</span><p>Stack a mole of ordinary sheets of paper and the pile would reach roughly 6,400 light-years out into the galaxy.</p></div>
+    </li>
+    <li>
+      <svg viewBox="0 0 56 56" aria-hidden="true" focusable="false">
+        <path d="M30,36 L50,50" stroke="#1C2B4A" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="20" cy="26" rx="16" ry="12" fill="#E9EEF4" stroke="#1C2B4A" stroke-width="2" transform="rotate(35 20 26)"/>
+        <ellipse cx="20" cy="26" rx="10" ry="7" fill="#9FD3D8" transform="rotate(35 20 26)"/>
+        <path d="M20,4 C24,10 25,12 25,14 A5,5 0 0 1 15,14 C15,12 16,10 20,4 Z" fill="#1F7F86"/>
+      </svg>
+      <div><span class="md-fact-num">18 mL</span><p>Yet molecules are so small that a whole mole of water is only about 18 mL, a little more than a tablespoon.</p></div>
+    </li>
+  </ul>
+</div>
+
+<!-- ============ CHALLENGE ============ -->
+<div class="md-sec">
+  <h3>Mole Day challenge</h3>
+  <div class="md-q">
+    <p>How many water molecules are in a 500 mL bottle of water? Use 1.00 g/mL for the density of water.</p>
+    <details>
+      <summary>Show the answer</summary>
+      <div class="md-sol">
+        <p>500 mL × 1.00 g/mL = 500 g H<sub>2</sub>O</p>
+        <p>500 g × (1 mol ÷ 18.02 g) = 27.7 mol H<sub>2</sub>O</p>
+        <p>27.7 mol × (6.022 × 10<sup>23</sup> molecules ÷ 1 mol) = <b>1.67 × 10<sup>25</sup> molecules</b></p>
+        <p>That's almost 28 moles in a single bottle.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<div class="md-foot">
+  <p>Mole Day has been celebrated since 1991, when Wisconsin chemistry teacher Maurice Oehler founded the National Mole Day Foundation. It falls during National Chemistry Week, and the number it honors is named for Amedeo Avogadro, whose 1811 hypothesis held that equal volumes of gases at the same temperature and pressure contain equal numbers of molecules.</p>
+  <p>Celebrate at 6:02 with a little guaca-mole.</p>
+  <p class="md-sign">Happy counting,<br>Prof. Picione</p>
+</div>
+</div>
+<!-- ================= TO HERE ================= -->
+
+</body>
+</html>
